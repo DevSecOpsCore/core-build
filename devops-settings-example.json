@@ -1,0 +1,123 @@
+{
+    "devops":
+    {
+        "build": [
+            {
+                "type": "container",
+                "platform": "openshift",
+                "builder": "docker"
+            },
+            {
+                "type": "container",
+                "platform": "openshift",
+                "builder": "buildah"
+            }
+          ],
+          "deployment": [
+            {
+                "type": "container",
+                "platform": "openshift",
+                "methode": "helm"
+            },
+            {
+                "type": "container",
+                "platform": "kubernetes",
+                "methode": "yaml"
+            }
+          ],
+        "helm":{
+           "app": "swo-core",
+           "registryUsername": "swoturkey",
+           "registryPassword": "***",
+           "isChartReady": "false",
+           "servicePort": "80",
+           "containerPort": "8080",
+           "serviceType": "ClusterIP",
+           "routeEnabled": "yes",
+           "hostName": "swo.dataserv.local",
+           "ingressEnabled": "false",
+           "restartPolicy": "Always",
+           "replicasCount": "3",
+           "resourcesEnabled": "true",
+           "requestsCPU": "150M",
+           "requestsMem": "500Mi",
+           "limitsCPU": "",
+           "limitsMem": "",
+           "configmapEnabled": "true",
+           "secretEnabled": "true",
+           "imageName": "swo-core",
+           "tag": "latest",
+           "registryName": "quay.io",
+           "repositoryName": "swoturkey",
+           "fullImagePath": "quay.io/swoturkey/swo-core:latest",
+           "pullPolicy": "Always",
+           "env": [
+             {
+              "type": "configmap",
+              "valueList": [
+                 "key1: value1",
+                 "key2: value2"
+              ]
+             },
+             {
+              "type": "secret",
+              "valueList": [
+                "key3: value3",
+                "key4: value4",
+                "key5: value5"
+              ]
+             }
+           ]
+        },
+        "details":
+            {
+                "responsible": "A team",
+                "domain": "coreBanking",
+                "app": "swo-core",
+                "registryUsername":"enespekdas",
+                "registryPassword":"en.141220",
+                "imageName":"image-test",
+                "registryName":"docker.io",
+                "dockerFilePath":"",
+                "tag":"enes1",
+                "dockerFileName":"Dockerfile_example",
+                "repositoryName":"enespekdas"
+            }
+          ,
+        "SecurityTest":[
+          {
+                  "type": "sast",
+                  "config":{
+                    "appName":"sonarqube",
+                    "project_name":"test123",
+                    "project_key":"swo"
+                  },
+                  "env":"dev"
+
+
+          },
+          {
+                  "type": "dast",
+                  "config":{
+                    "appName":"owaspZap",
+                    "endpoint":"https://swo.com",
+                    "timeout":"2"
+                  },
+                  "env":"dev"
+          }
+          ,
+          {
+                  "type": "dast",
+                  "config":{
+                    "appName":"owaspZap",
+                    "endpoint":"https://swo.prod.com",
+                    "timeout":"2"
+                  },
+                  "env":"prod"
+          }
+      ]
+
+    },
+    "others":"others"
+
+  }

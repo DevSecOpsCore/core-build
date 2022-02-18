@@ -38,7 +38,7 @@ olacağını belirtmektedir. Aşağıda örnek json yapısını görmektesiniz.
             }
           ,
         
-      ]
+      
 
     }
 

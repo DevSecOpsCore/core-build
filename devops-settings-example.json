@@ -1,30 +1,15 @@
 {
     "devops":
     {
-        "build": [
+        "build":
             {
                 "type": "container",
                 "platform": "openshift",
-                "builder": "docker"
+                "builder": "podman"
             },
-            {
-                "type": "container",
-                "platform": "openshift",
-                "builder": "buildah"
-            }
-          ],
-          "deployment": [
-            {
-                "type": "container",
-                "platform": "openshift",
-                "methode": "helm"
-            },
-            {
-                "type": "container",
-                "platform": "kubernetes",
-                "methode": "yaml"
-            }
-          ],
+
+
+
         "helm":{
            "app": "swo-core",
            "registryUsername": "swoturkey",
@@ -71,17 +56,10 @@
         },
         "details":
             {
-                "responsible": "A team",
-                "domain": "coreBanking",
-                "app": "swo-core",
-                "registryUsername":"enespekdas",
-                "registryPassword":"en.141220",
                 "imageName":"image-test",
-                "registryName":"docker.io",
                 "dockerFilePath":"",
                 "tag":"enes1",
-                "dockerFileName":"Dockerfile_example",
-                "repositoryName":"enespekdas"
+                "dockerFileName":""
             }
           ,
         "SecurityTest":[

@@ -1,0 +1,33 @@
+name: 'Docker File is Getting Ready'
+description: 'Docker file will be created image from buildah , image will be send docker.hub repository . After image will pull machine and run.'
+inputs:
+  JSONPATH:  # path
+    description: ' '
+    required: false
+    default: ''
+  JSON_NAME: # path
+    description: ' '
+    required: false
+    default: 'devops-setting-example.json'
+outputs:
+  Result: 
+    description: "Build step results"
+    value: "Build steps  finished"
+runs:
+  using: "composite"
+  steps: 
+    - name: Repository Files are downloading
+      uses: actions/checkout@v2
+    - run : echo "Secret Password Yaziyorum"
+      shell: bash
+    - run : echo ${{ inputs.PASSWORD }}
+      shell: bash 
+    - run : echo "Username Yaziyorum"
+      shell: bash   
+    - run : echo ${{ inputs.USERNAME }}
+      shell: bash
+    - run : python ${{ github.action_path }}/build.py ${{ inputs.JSONPATH }} ${{ inputs.JSON_NAME }}
+      shell: bash
+    - run : echo "${{secrets.QUAYIO_PASSWD}}"
+      shell: bash
+ 

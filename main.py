@@ -11,6 +11,5 @@ parseJson = ParseBuildData()
 
 buildImage.readJsonFile()
 parseJson.parseBuild(buildImage.jsonData['devops'])
-print( ParseBuildData.build[0]['builder'])
 buildImage.build()
 

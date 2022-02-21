@@ -19,7 +19,7 @@ runs:
     - name: Repository Files are downloading
       uses: actions/checkout@v2
     
-    - run : python ${{ github.action_path }}/main.py -jp ${{ inputs.jPath }} -jn ${{ inputs.jName }}
+    - run : python ${{ github.action_path }}/main.py --jPath ${{ inputs.jPath }} --jName ${{ inputs.jName }}
       shell: bash
    
  

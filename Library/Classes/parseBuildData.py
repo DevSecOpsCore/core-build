@@ -1,4 +1,5 @@
 import argparse
+from ast import arg
 
 
 class ParseBuildData:
@@ -53,6 +54,8 @@ class ParseBuildData:
             else:
                 ParseBuildData.commandParameters['jName'] = args.jName+'.json'
         if args.jPath is None:
+            ParseBuildData.commandParameters['jPath'] = ''
+        elif args.jPath == 'default':
             ParseBuildData.commandParameters['jPath'] = ''
         else:
             ParseBuildData.commandParameters['jPath'] = args.jPath

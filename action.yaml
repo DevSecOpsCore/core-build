@@ -18,7 +18,7 @@ runs:
   steps: 
     - name: Repository Files are downloading
       uses: actions/checkout@v2
-    -
+    
     - run : python ${{ github.action_path }}/main.py -jp ${{ inputs.jPath }} -jn ${{ inputs.jName }}
       shell: bash
    

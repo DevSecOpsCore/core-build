@@ -36,9 +36,9 @@ olacağını belirtmektedir. Aşağıda örnek json yapısını görmektesiniz.
                 "dockerFileName":"Dockerfile_example",
                 "repositoryName":"enespekdas"
             }
-          ,
-        
-      ]
+          
+      
+      
 
     }
 

@@ -1,11 +1,11 @@
 name: 'Docker File is Getting Ready'
 description: 'Docker file will be created image from buildah , image will be send docker.hub repository . After image will pull machine and run.'
 inputs:
-  JSONPATH:  # path
+  jPath:  # path
     description: ' '
     required: false
     default: ''
-  JSON_NAME: # path
+  jName: # path
     description: ' '
     required: false
     default: 'devops-setting-example.json'
@@ -26,7 +26,7 @@ runs:
       shell: bash   
     - run : echo ${{ inputs.USERNAME }}
       shell: bash
-    - run : python ${{ github.action_path }}/build.py ${{ inputs.JSONPATH }} ${{ inputs.JSON_NAME }}
+    - run : python ${{ github.action_path }}/main.py -jp ${{ inputs.jPath }} -jn ${{ inputs.jName }}
       shell: bash
     - run : echo "${{secrets.QUAYIO_PASSWD}}"
       shell: bash

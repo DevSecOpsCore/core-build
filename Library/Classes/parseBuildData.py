@@ -1,8 +1,12 @@
-class ParseBuildData():
+import argparse
+
+
+class ParseBuildData:
     build = []
     helm = []
     details = []
     securityTest = []
+    commandParameters = {}
 
     def __init__(self):
         pass
@@ -36,5 +40,19 @@ class ParseBuildData():
                 self.helm.append(class_parse_json_data.parseBuild(value))
 
     @staticmethod
-    def test():
-        return True
+    def splitSysParams():
+        parser = argparse.ArgumentParser()
+        parser.add_argument("-jp", "--jPath", required=False)
+        parser.add_argument("-jn", "--jName", required=False)
+        args = parser.parse_args()
+        if args.jName is None:
+            ParseBuildData.commandParameters['jName'] = 'devops-settings-example.json'
+        else:
+            if 'json' in args.jName:
+               ParseBuildData.commandParameters['jName'] = args.jName
+            else:
+                ParseBuildData.commandParameters['jName'] = args.jName+'.json'
+        if args.jPath is None:
+            ParseBuildData.commandParameters['jPath'] = ''
+        else:
+            ParseBuildData.commandParameters['jPath'] = args.jPath

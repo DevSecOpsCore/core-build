@@ -11,9 +11,8 @@ class buildImage:
         pass
 
     @staticmethod
-    def readJsonFile(filePath=''):
-
-        with open(filePath+'devops-settings-example.json') as json_file:
+    def readJsonFile():
+        with open(ParseBuildData.commandParameters['jPath']+''+ParseBuildData.commandParameters['jName']) as json_file:
             buildImage.jsonData = dict(json.load(json_file))
         return buildImage.jsonData
 
@@ -29,6 +28,4 @@ class buildImage:
             print ('podman ile build ediyorum.')
             lsYap = subprocess.check_output("echo podman imajlari listeleniyor", shell=True)
             print(lsYap)
-    def splitParameters():
-        print("sa")
-
+        print (ParseBuildData.commandParameters)

@@ -5,7 +5,7 @@ inputs:
     description: ' '
     required: false
     default: ''
-  jName: # path
+  jName: # Name
     description: ' '
     required: false
     default: 'devops-setting-example.json'
@@ -18,16 +18,8 @@ runs:
   steps: 
     - name: Repository Files are downloading
       uses: actions/checkout@v2
-    - run : echo "Secret Password Yaziyorum"
-      shell: bash
-    - run : echo ${{ inputs.PASSWORD }}
-      shell: bash 
-    - run : echo "Username Yaziyorum"
-      shell: bash   
-    - run : echo ${{ inputs.USERNAME }}
-      shell: bash
+    -
     - run : python ${{ github.action_path }}/main.py -jp ${{ inputs.jPath }} -jn ${{ inputs.jName }}
       shell: bash
-    - run : echo "${{secrets.QUAYIO_PASSWD}}"
-      shell: bash
+   
  

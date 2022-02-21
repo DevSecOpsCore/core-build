@@ -38,7 +38,7 @@ olacağını belirtmektedir. Aşağıda örnek json yapısını görmektesiniz.
             }
           ,
         
-      
+      ]
 
     }
 
@@ -96,4 +96,40 @@ Build product'ı "build" ve "details" alanlarından beslenerek işlem yapmaktad�
 "dockerFilePath" --> Dockerfile'ın bulunduğu path'i belirtmektedir. Default olarak kodların bulunduğu ana dizini almaktadır.
 
 
+
+## Örnek Kullanım ve Detaylar 
+
+Build product'ını Github workflow'unuza aşağıdaki örnekte olduğu gibi çağırarak kullanabilirsiniz. 
+
+``` yaml
+steps:
+    - name : Build GitHub Custom Action 
+      id : builaction
+      uses: DevSecOpsCore/core-build@v1.1
+      with:
+        jPath : "/tmp/" ##example
+        jName : "devops-setting-example.json" ## example
+
+```
+
+<_Json_File_Path_> : Eğer json dosyası kodun yukarıdaki gibi ana dizininde değil de başka bir dizinde ise bu parametre verilerek dosyanın yolu belirtilebilir ve artık oradan okunması sağlanabilir. Default olarak ana dizine bakmaktadır.
+
+<_Json_File_Name_> : Eğer json dosyasını farklı bir isimde oluşturduysanız bu parametreyi vererek dosyanın ismini girebilir ve ismi verilen dosya üzerinden işlem yapılması sağlanabilir. Default olarak " devops-setting-example.json " dosyasına bakılmaktadır.
+
+
+
+- Detaylar : 
+  - Yukarıda göndermiş olduğunuz jPath ve jName parametreleri core-build kodunda ana dizinde bulunan "action.yaml" tarafından karşılanır.
+  
+  ![Uygulama Ekran Görüntüsü](  https://user-images.githubusercontent.com/38957716/154930083-c0208f98-105d-44a0-9347-47937c4e26c7.png)
+
+  -   Input olarak alınan jPath ve jName değerleri python script'ine yine action.yaml dosyassında aşağıdaki şekilde aktarılır.
+
+
+  - Main.py dosyası jPath ve jName parametreleri gönderilerek çalıştırılır.
+  
+  - Main.py ilk çalıştığında ParseBuildData class'ında çalşmakta olan "splitSysParams" adlı fonksiyonu çalıştırır.
+  
+  - ParseBuildData içerisinde bulunan "splitSysParams" fonksiyonu python scriptine gelen parametrik değerlerin alındığı ve atamasının yapıldığı fonksiyondur. 
+    ![Uygulama Ekran Görüntüsü](    https://user-images.githubusercontent.com/38957716/154931800-590ea8ea-b4e7-4955-b030-4c20f6574565.png)
 

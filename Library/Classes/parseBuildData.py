@@ -52,7 +52,7 @@ class ParseBuildData:
                ParseBuildData.commandParameters['jName'] = args.jName
             else:
                 ParseBuildData.commandParameters['jName'] = args.jName+'.json'
-        if args.jPath == 'default':
+        if args.jPath == 'defaultt':
             ParseBuildData.commandParameters['jPath'] = ''
         else:
             ParseBuildData.commandParameters['jPath'] = args.jPath

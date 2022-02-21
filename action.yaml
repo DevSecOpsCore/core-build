@@ -4,7 +4,7 @@ inputs:
   jPath:  # path
     description: ' '
     required: false
-    default: ''
+    default: 'default'
   jName: # Name
     description: ' '
     required: false

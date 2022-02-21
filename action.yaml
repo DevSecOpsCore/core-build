@@ -1,5 +1,5 @@
 name: 'Docker File is Getting Ready'
-description: 'Docker file will be created image from buildah , image will be send docker.hub repository . After image will pull machine and run.'
+description: 'Docker file will be created image from podman , image will be send docker.hub repository . After image will pull machine and run.'
 inputs:
   jPath:  # path
     description: ' '

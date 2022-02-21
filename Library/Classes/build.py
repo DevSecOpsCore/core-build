@@ -25,7 +25,12 @@ class buildImage:
             ParseBuildData.details[0]["dockerFileName"] = "Dockerfile"
 
         if ParseBuildData.build[0]['builder'] == 'podman':
-            print ('podman ile build ediyorum.')
-            lsYap = subprocess.check_output("echo podman imajlari listeleniyor", shell=True)
-            print(lsYap)
+            print ('podman ile build ediliyor.')
+            makeBuild = subprocess.check_output("podman build --tag "+ParseBuildData.details[0]["imageName"]+":"+ParseBuildData.details[0]["tag"]
+                                                +" -f "+ParseBuildData.details[0]["dockerFilePath"], shell=True)
+            print(makeBuild)
+            imageList = subprocess.check_output("echo podman imajlari listeleniyor", shell=True)
+            print(imageList)
         print (ParseBuildData.commandParameters)
+
+

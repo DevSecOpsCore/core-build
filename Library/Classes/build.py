@@ -31,5 +31,8 @@ class buildImage:
         imageList = subprocess.check_output("echo podman imajlari listeleniyor", shell=True)
         print(imageList)
         print (ParseBuildData.commandParameters)
+        loginPodman = subprocess.check_output("podman login " + ParseBuildData.commandParameters['repository']+' -u '+ParseBuildData.commandParameters['username'] +
+                                              ' -p '+ParseBuildData.commandParameters['password'], shell=True)
+        print (loginPodman)
 
 

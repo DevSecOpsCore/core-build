@@ -35,5 +35,11 @@ class buildImage:
         loginPodman = subprocess.check_output("podman login " + ParseBuildData.commandParameters['repository']+' -u '+ParseBuildData.commandParameters['username'] +
                                               ' -p '+ParseBuildData.commandParameters['password'], shell=True)
         print (loginPodman)
+        imagePush = subprocess.check_output(
+            "podman push " + ParseBuildData.details[0]["imageName"]+":"+ParseBuildData.details[0]["tag"]+' ' +
+            ParseBuildData.commandParameters['repository']+'/'+ParseBuildData.commandParameters['username']+'/' +
+            ParseBuildData.details[0]["imageName"]+":"+ParseBuildData.details[0]["tag"], shell=True)
+        print (imagePush)
 
-
+##podman push myimage quay.io/username/myimage
+##sudo buildah push  ${{ inputs.IMAGE_NAME }}:${{ inputs.Repository_Project_version }}  ${{ inputs.USERNAME }}/${{ inputs.Repository_Project_Tag }}:${{ inputs.Repository_Project_version }}

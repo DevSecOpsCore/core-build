@@ -9,6 +9,10 @@ inputs:
     description: ' '
     required: false
     default: 'devops-setting-example.json'
+  Repository: # Name
+    description: ' '
+    required: false
+    default: 'quay.io'
   RepoUserName: # Name
     description: 'Repository username'
     required: True
@@ -28,7 +32,7 @@ runs:
       uses: actions/checkout@v2
     - run: echo ${{inputs.jPath}} ${{ inputs.jName }}
       shell: bash
-    - run: podman login quay.io -u ${{inputs.RepoUserName}} -p ${{inputs.RepoPassword}}
+    - run: podman login ${{inputs.Repository}} -u ${{inputs.RepoUserName}} -p ${{inputs.RepoPassword}}
       shell: bash
     - run : python ${{ github.action_path }}/main.py --jPath ${{inputs.jPath}} --jName ${{ inputs.jName }}
       shell: bash

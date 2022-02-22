@@ -120,6 +120,7 @@ steps:
 
 - Detaylar : 
   - Yukarıda göndermiş olduğunuz **jPath** ve **jName** parametreleri core-build kodunda ana dizinde bulunan **action.yaml** tarafından karşılanır.
+  
    ![Uygulama Ekran Görüntüsü](      https://user-images.githubusercontent.com/38957716/154930083-c0208f98-105d-44a0-9347-47937c4e26c7.png)
 
   -   Input olarak alınan **jPath** ve **jName** değerleri python script'ine yine **action.yaml** dosyassında aşağıdaki şekilde aktarılır.

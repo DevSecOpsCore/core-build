@@ -32,9 +32,8 @@ runs:
       uses: actions/checkout@v2
     - run: echo ${{inputs.jPath}} ${{ inputs.jName }}
       shell: bash
-    - run: podman login ${{inputs.Repository}} -u ${{inputs.RepoUserName}} -p ${{inputs.RepoPassword}}
-      shell: bash
-    - run : python ${{ github.action_path }}/main.py --jPath ${{inputs.jPath}} --jName ${{ inputs.jName }}
+
+    - run : python ${{ github.action_path }}/main.py --jPath ${{inputs.jPath}} --jName ${{ inputs.jName }} -u ${{ inputs.RepoUserName }} -p ${{ inputs.RepoPassword }} -rp ${{ inputs.Repository }}
       shell: bash
    
  

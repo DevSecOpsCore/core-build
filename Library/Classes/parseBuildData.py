@@ -44,14 +44,23 @@ class ParseBuildData:
         parser = argparse.ArgumentParser()
         parser.add_argument("-jp", "--jPath", required=False)
         parser.add_argument("-jn", "--jName", required=False)
+        parser.add_argument("-u", "--username", required=True)
+        parser.add_argument("-p", "--password", required=True)
+        parser.add_argument("-rp", "--repository", required=True)
+
         args = parser.parse_args()
+
+        ParseBuildData.commandParameters['username'] = args.username
+        ParseBuildData.commandParameters['password'] = args.password
+        ParseBuildData.commandParameters['repository'] = args.repository
+
         if args.jName is None:
             ParseBuildData.commandParameters['jName'] = 'devops-settings-example.json'
         else:
             if 'json' in args.jName:
-               ParseBuildData.commandParameters['jName'] = args.jName
+                ParseBuildData.commandParameters['jName'] = args.jName
             else:
-                ParseBuildData.commandParameters['jName'] = args.jName+'.json'
+                ParseBuildData.commandParameters['jName'] = args.jName + '.json'
         if args.jPath is None:
             ParseBuildData.commandParameters['jPath'] = ''
         elif args.jPath == 'default':

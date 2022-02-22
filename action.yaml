@@ -9,6 +9,14 @@ inputs:
     description: ' '
     required: false
     default: 'devops-setting-example.json'
+  RepoUserName: # Name
+    description: 'Repository username'
+    required: True
+    default: 'username'
+  RepoPassword: # Name
+    description: 'Repository Password'
+    required: True
+    default: 'password'
 outputs:
   Result: 
     description: "Build step results"
@@ -19,6 +27,8 @@ runs:
     - name: Repository Files are downloading
       uses: actions/checkout@v2
     - run: echo ${{inputs.jPath}} ${{ inputs.jName }}
+      shell: bash
+    - run: podman login quay.io -u ${{inputs.RepoUserName}} -p ${{inputs.RepoPassword}}
       shell: bash
     - run : python ${{ github.action_path }}/main.py --jPath ${{inputs.jPath}} --jName ${{ inputs.jName }}
       shell: bash
